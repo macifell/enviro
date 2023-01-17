@@ -76,6 +76,7 @@ try:
   #   del reading["temperature"]        # remove the temperature reading
   #
   #   reading["custom"] = my_reading()  # add my custom reading value
+  del reading["voltage"]
 
   # is an upload destination set?
   if enviro.config.destination:
