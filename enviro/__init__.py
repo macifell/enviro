@@ -173,7 +173,7 @@ def connect_to_wifi():
   logging.info("  - ip address: ", ip)
   """
   import rp2
-  rp2.country("GB") 
+  rp2.country("US") 
   wlan = network.WLAN(network.STA_IF)
   wlan.active(True)
   wlan.connect(wifi_ssid, wifi_password)
