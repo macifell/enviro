@@ -25,7 +25,7 @@ def upload_reading(reading):
   # send the payload
   username = config.adafruit_io_username
   headers = {'X-AIO-Key': config.adafruit_io_key, 'Content-Type': 'application/json'}
-  url = f"http://io.adafruit.com/api/v2/{username}/groups/enviro/data"
+  url = f"https://io.adafruit.com/api/v2/{username}/groups/enviro/data"
 
   try:
     result = urequests.post(url, json=payload, headers=headers)
