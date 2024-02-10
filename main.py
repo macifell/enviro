@@ -36,12 +36,11 @@ try:
   # initialise enviro
   enviro.startup()
 
-  # if the clock isn't set...
-  if not enviro.is_clock_set():
-    enviro.logging.info("> clock not set, synchronise from ntp server")
-    if not enviro.sync_clock_from_ntp():
-      # failed to talk to ntp server go back to sleep for another cycle
-      enviro.halt("! failed to synchronise clock")  
+  # always set the clock as it tends to diverge significantly over time
+  enviro.logging.info("> synchronise time from ntp server")
+  if not enviro.sync_clock_from_ntp() and not enviro.is_clock_set():
+    # if the sync failed and the clock has never been set, then go back to sleep for another cycle
+    enviro.halt("! failed to synchronise clock")  
 
   # check disk space...
   if enviro.low_disk_space():
